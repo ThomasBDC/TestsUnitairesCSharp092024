@@ -2,25 +2,47 @@ using TestsUnitairesCSharp092024;
 
 namespace TestsUnitairesCSharp072024.UnitTests
 {
-    [TestClass]
-    public class PasswordVerification_UnitTests
-    {
-        [TestMethod]
-        public void Password_ShouldBeStrong()
-        {
-            string passwordStrong = "hspsdf skjsdh fkdsjhf dskjfh sdkfjfsfd";
-            bool IsOKStrong = PasswordVerificator.IsPasswordOk(passwordStrong);
+	[TestClass]
+	public class PasswordVerification_UnitTests
+	{
+		[TestMethod]
+		public void Password_ShouldBeUnBreakable()
+		{
+			string passwordStrong = "oKIA*e3Xv_8J@QE";
+			PasswordStrength strengthPassword = PasswordVerificator.IsPasswordOk(passwordStrong);
+			PasswordStrength expected = PasswordStrength.Unbreakable;
+			Assert.AreEqual(expected, strengthPassword, $"Le mot de passe est {strengthPassword}, alors qu'il devrait être {expected}");
+		}
 
-            Assert.IsTrue(IsOKStrong, "Le mot de passe n'est pas fort, alors qu'il devrait");
-        }
+		[TestMethod]
+		public void Password_ShouldBeStrong()
+		{
+			string passwordStrong = "L}]#F%M=C%>@G`%";
+			PasswordStrength strengthPassword = PasswordVerificator.IsPasswordOk(passwordStrong);
 
-        [TestMethod]
-        public void Password_ShouldBeWeak()
-        {
-            string passwordStrong = "hspsdf";
-            bool IsOKStrong = PasswordVerificator.IsPasswordOk(passwordStrong);
+			PasswordStrength expected = PasswordStrength.Strong;
+			Assert.AreEqual(expected, strengthPassword, $"Le mot de passe est {strengthPassword}, alors qu'il devrait être {expected}");
+		}
 
-            Assert.IsFalse(IsOKStrong, "Le mot de passe est fort, alors qu'il ne devrait pas");
-        }
-    }
+		[TestMethod]
+		public void Password_ShouldBeMedium()
+		{
+			string passwordStrong = "nE1K1Xiy5l";
+			PasswordStrength strengthPassword = PasswordVerificator.IsPasswordOk(passwordStrong);
+
+			PasswordStrength expected = PasswordStrength.Medium;
+			Assert.AreEqual(expected, strengthPassword, $"Le mot de passe est {strengthPassword}, alors qu'il devrait être {expected}");
+
+		}
+		[TestMethod]
+		public void Password_ShouldBeWeak()
+		{
+			string passwordStrong = "OHAXTn";
+			PasswordStrength strengthPassword = PasswordVerificator.IsPasswordOk(passwordStrong);
+
+			PasswordStrength expected = PasswordStrength.Weak;
+			Assert.AreEqual(expected, strengthPassword, $"Le mot de passe est {strengthPassword}, alors qu'il devrait être {expected}");
+
+		}
+	}
 }

@@ -9,24 +9,6 @@ void Test_IsPasswordOk()
 {
     string passwordStrong = "blablabladpis fhpdiof hspfsfd";
     string passwordWeak = "bla";
-    bool IsOKStrong = PasswordVerificator.IsPasswordOk(passwordStrong);
-    if (IsOKStrong)
-    {
-        Console.WriteLine("Le test fonctionne");
-    }
-    else
-    {
-        Console.WriteLine("Le test ne fonctionne pas");
-    }
-
-    bool IsOKWeak = PasswordVerificator.IsPasswordOk(passwordWeak);
-    if (IsOKWeak == false)
-    {
-        Console.WriteLine("Le test fonctionne");
-    }
-    else
-    {
-        Console.WriteLine("Le test ne fonctionne pas");
-    }
+    
 
 }
